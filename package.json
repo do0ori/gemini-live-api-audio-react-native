@@ -26,7 +26,8 @@
         "react-native-webrtc": "^124.0.5"
     },
     "devDependencies": {
-        "@babel/core": "^7.20.0"
+        "@babel/core": "^7.20.0",
+        "babel-preset-expo": "^13.2.3"
     },
     "private": true
 }
