@@ -1,9 +1,11 @@
+const { getDefaultConfig } = require("expo/metro-config");
 const {
     wrapWithAudioAPIMetroConfig,
 } = require("react-native-audio-api/metro-config");
 
-const config = {
-    // 기존 Metro 설정이 있다면 여기에 추가
-};
+const config = getDefaultConfig(__dirname);
+config.transformer.assetRegistryPath = require.resolve(
+    "react-native/Libraries/Image/AssetRegistry"
+);
 
 module.exports = wrapWithAudioAPIMetroConfig(config);
