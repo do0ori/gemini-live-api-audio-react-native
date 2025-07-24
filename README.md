@@ -11,11 +11,12 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
 
 ---
 
-<div align="center">
-  <img src="assets/rnandroid1.png" height="400" style="display:inline-block;"/>
-  <img src="assets/rnandroid2.png" height="400" style="display:inline-block;"/>
-  <img src="assets/rnandroid3.png" height="400" style="display:inline-block;"/>
-</div>
+<p align="center">
+  <img src="assets/s25-screenshot1.jpg" width="40%" alt="stop" />
+  <img src="assets/s25-screenshot2.jpg" width="40%" alt="start" />
+  <img src="assets/s25-screenshot3.jpg" width="40%" alt="transcript" />
+  <img src="assets/s25-screenshot4.jpg" width="40%" alt="speaker & mic off" />
+</p>
 
 ## Features
 
@@ -43,6 +44,7 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
     -   Even when muted, the app continues to receive and play back AI responses which were already generated.
 
 -   **Speaker Mode Toggle:**
+
     -   Switch audio output between the main loudspeaker and the earpiece.
     -   Provides flexibility for private listening or hands-free use.
 
