@@ -11,11 +11,12 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
 
 ---
 
-<div align="center">
-  <img src="assets/rnandroid1.png" height="400" style="display:inline-block;"/>
-  <img src="assets/rnandroid2.png" height="400" style="display:inline-block;"/>
-  <img src="assets/rnandroid3.png" height="400" style="display:inline-block;"/>
-</div>
+<p align="center">
+  <img src="assets/s25-screenshot1.jpg" width="40%" alt="stop" />
+  <img src="assets/s25-screenshot2.jpg" width="40%" alt="start" />
+  <img src="assets/s25-screenshot3.jpg" width="40%" alt="transcript" />
+  <img src="assets/s25-screenshot4.jpg" width="40%" alt="speaker & mic off" />
+</p>
 
 ## Features
 
@@ -42,9 +43,15 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
     -   Doesnt close the connection with Gemini Live API; only stops sharing audio with it.
     -   Even when muted, the app continues to receive and play back AI responses which were already generated.
 
--   **Speaker Routing:**
+-   **Speaker Mode Toggle:**
 
-    -   Forces playback through the bottom-firing (loud) speakers, not the earpiece.
+    -   Switch audio output between the main loudspeaker and the earpiece.
+    -   Provides flexibility for private listening or hands-free use.
+
+-   **Dynamic Speaker Routing:**
+
+    -   Toggle audio playback between the main loudspeaker and the earpiece.
+    -   Defaults to the loudspeaker for a hands-free experience, with an option for private listening.
     -   Includes robust fallback mechanisms to ensure proper audio routing.
 
 -   **High Volume & Clarity:**
@@ -73,7 +80,7 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
                                               |
                                     [AudioOutputService]
                                               |
-                                    [Loudspeaker Output]
+                                    [Loudspeaker/Earpiece Output]
 ```
 
 ## Setup & Installation
@@ -113,7 +120,7 @@ Speak to Gemini and hear AI-powered responses played back through your device's 
 -   The button changes color to indicate active status (white for start, red for stop).
 -   Your voice is streamed to Gemini and you'll hear the AI's response played through the main speaker.
 -   Visual indicators show when the AI is speaking and the current status.
--   All audio is routed through the loudspeaker for maximum clarity.
+-   Use the speaker icon button to toggle audio output between the main speaker and the earpiece.
 -   **To view the transcript, tap the Transcript button next to Start/Stop. The popup will show a live chat log of your conversation.**
 
 ---
