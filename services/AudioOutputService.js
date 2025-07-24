@@ -24,9 +24,21 @@ let audioQueue = [];
 let bufferAggregator = []; // Stores chunks for aggregation
 let bufferTimer = null; // Timer for buffer processing
 let tempFileCounter = 0;
+let isSpeakerOn = true; // Default to speaker on
 
 // Keep track of InCallManager initialization status
 let isInCallManagerInitialized = false;
+
+// Function to toggle speaker mode
+const toggleSpeakerMode = (isOn) => {
+    if (isInCallManagerInitialized && InCallManager && typeof InCallManager.setForceSpeakerphoneOn === 'function') {
+        isSpeakerOn = isOn;
+        InCallManager.setForceSpeakerphoneOn(isSpeakerOn);
+        console.log(`AudioOutputService: Speaker mode set to ${isSpeakerOn ? 'ON' : 'OFF'}`);
+    } else {
+        console.warn('AudioOutputService: Cannot toggle speaker mode, InCallManager not ready.');
+    }
+};
 
 // Initialize InCallManager safely - only if available
 const initializeInCallManager = async () => {
@@ -61,7 +73,7 @@ const initializeInCallManager = async () => {
             auto: true, // Automatically configure
             ringback: "", // No ringback tone
             force: true, // Force these settings
-            forceSpeakerOn: true, // Explicitly force speaker mode
+            forceSpeakerOn: isSpeakerOn, // Use state variable
             enableAEC: AEC_ENABLED, // Enable Acoustic Echo Cancellation
             enableAGC: AGC_ENABLED, // Enable Automatic Gain Control
             enableNS: NS_ENABLED, // Enable Noise Suppression
@@ -75,7 +87,7 @@ const initializeInCallManager = async () => {
             InCallManager &&
             typeof InCallManager.setForceSpeakerphoneOn === "function"
         ) {
-            InCallManager.setForceSpeakerphoneOn(true);
+            InCallManager.setForceSpeakerphoneOn(isSpeakerOn);
             // console.log('AudioOutputService: Speaker mode forced on');
         } else {
             console.warn(
@@ -274,7 +286,7 @@ const _playSoundObject = async (playerNode) => {
                 InCallManager &&
                 typeof InCallManager.setForceSpeakerphoneOn === "function"
             ) {
-                InCallManager.setForceSpeakerphoneOn(true);
+                InCallManager.setForceSpeakerphoneOn(isSpeakerOn);
             }
 
             // console.log('AudioOutputService: Audio session re-activated for playback with speaker mode');
@@ -755,6 +767,7 @@ export {
     cleanupTempFiles,
     clearPlaybackQueue,
     playAudioChunk,
+    toggleSpeakerMode,
 };
 
 // Add event listener for app state changes to clean up resources when app is closed
@@ -780,4 +793,5 @@ export default {
     playAudioChunk,
     clearPlaybackQueue,
     cleanupAudioResources, // Export the cleanup function so it can be called from outside
+    toggleSpeakerMode,
 };
